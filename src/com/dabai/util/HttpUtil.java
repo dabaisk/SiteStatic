@@ -59,6 +59,7 @@ public class HttpUtil {
 			System.out.println("非法链接,智能跳过：" + strUrl);
 			return;
 		}
+		/** 检查url是否进入预下载队列 */
 		if (Main.isRepeat(strUrl)) {
 			return;
 		}
@@ -100,17 +101,12 @@ public class HttpUtil {
 			}
 			htmlSplit(htmlBody);
 			/**
-			String[] strBodys = htmlBody.split(".html\"");
-			for (String string : strBodys) {
-				String html = string.substring(string.lastIndexOf("href=\"") + 6) + ".html";
-				if (html.lastIndexOf("\"") > 0) {
-					continue;
-				} else if (html.lastIndexOf(".com") > 0) {
-					continue;
-				}
-				Main.add(html);
-			}
-*/
+			 * String[] strBodys = htmlBody.split(".html\""); for (String string
+			 * : strBodys) { String html =
+			 * string.substring(string.lastIndexOf("href=\"") + 6) + ".html"; if
+			 * (html.lastIndexOf("\"") > 0) { continue; } else if
+			 * (html.lastIndexOf(".com") > 0) { continue; } Main.add(html); }
+			 */
 			String path = "c:/page/www.kleep.xyz";
 			if (0 == isHome) {
 				// 写入文件
@@ -133,7 +129,7 @@ public class HttpUtil {
 	static void htmlSplit(String htmlBody) {
 		String[] suffix = { "html", "shtml" };
 		for (int i = 0; i < suffix.length; i++) {
-			String[] strBodys = htmlBody.split("." + suffix[i]+"\"");
+			String[] strBodys = htmlBody.split("." + suffix[i] + "\"");
 			for (String string : strBodys) {
 				String html = string.substring(string.lastIndexOf("=\"") + 2) + "." + suffix[i] + "";
 
