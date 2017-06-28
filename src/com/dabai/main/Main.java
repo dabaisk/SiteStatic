@@ -13,7 +13,7 @@ public class Main {
 	/** 记录程序开始时间 */
 	public final static Date startDate = new Date();
 	/** 配置网站主域名 */
-	public final static String site = "http://www.kleep.xyz:8080";
+	public final static String site = "http://119.28.13.165:8080";
 	/** html链接存储 */
 	public static String[] htmls = new String[500];
 	/** html链接总数 */

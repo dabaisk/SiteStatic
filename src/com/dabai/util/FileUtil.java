@@ -1,25 +1,11 @@
 package com.dabai.util;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.channels.FileChannel;
 
 public class FileUtil {
-
-	public static void main(String[] args) throws IOException {
-
-		/** 创建只读文件 */
-		RandomAccessFile in = new RandomAccessFile("D:/360Downloads/pan/ADT-23.0.3.zip", "r");
-		/** 将输入跳转到指定位置 */
-		in.seek(0);
-		FileChannel inChannel = in.getChannel();
-
-	}
 
 	/**
 	 * 创建文件
