@@ -13,7 +13,6 @@ import com.dabai.main.Main;
 
 public class HttpUtil {
 
-	private static ArrayList<String> readList = new ArrayList<String>();// 已读取URL
 
 	public static boolean isSite(String url) {
 		// 不允许中文正则
@@ -59,20 +58,14 @@ public class HttpUtil {
 			System.out.println("非法链接,智能跳过：" + strUrl);
 			return;
 		}
-		/** 检查url是否进入预下载队列 */
-		if (Main.isRepeat(strUrl)) {
-			return;
-		}
-		synchronized (Main.site) {
-
-			/** 防止多线程重新加载页面 */
-			for (String string : readList) {
-				if (string.equals(strUrl)) {
-					return;
-				}
+		synchronized (Main.class) {
+			/** 检查url是否进入预下载队列 */
+			if (Main.isRepeat(strUrl)) {
+				System.out.println("重复队列  跳过");
+				return;
 			}
-			readList.add(strUrl);
 		}
+
 		try {
 			// 创建一个url对象来指向 该网站链接 括号里()装载的是该网站链接的路径
 			URL url = new URL(strUrl);
